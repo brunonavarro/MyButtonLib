@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.apps.mybuttonlib"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 21
@@ -22,7 +22,7 @@ android {
                     from(components["release"])
                     groupId = "com.github.brunonavarro"
                     artifactId = "MyButtonLib"
-                    version = "1.0.0-beta1"
+                    version = "1.0.0-beta2"
                 }
                 repositories {
                     mavenLocal()
@@ -39,6 +39,12 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -57,4 +63,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.androidx.compose.bom))
+
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+
 }
